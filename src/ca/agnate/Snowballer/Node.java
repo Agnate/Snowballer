@@ -6,7 +6,7 @@ public enum Node {
     EXTINGUISH("extinguish");
 
     private String perm;
-    private String prefix = "ca.agnate.Snowballer.";
+    private String prefix = "snowballer.";
 
     private Node (String perm) {
 	this.perm = perm;

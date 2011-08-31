@@ -2,7 +2,7 @@ author: Agnate
 database: false
 description: Adds functionality to Snowballs.
 generator: http://dinnerbone.com/minecraft/tools/pluginator/
-main: ca.agnate.Snowballer
+main: ca.agnate.Snowballer.Snowballer
 name: Snowballer
 startup: postworld
 version: 0.1.0
