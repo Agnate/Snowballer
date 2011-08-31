@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityListener;
-import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.config.Configuration;
@@ -19,7 +18,6 @@ public class Snowballer extends JavaPlugin {
     private int snowballDamage;
     private boolean throwFromDispensers;
     
-    public static PluginDescriptionFile desc;
     public static File dir;
 
     public void onDisable() {
@@ -28,8 +26,7 @@ public class Snowballer extends JavaPlugin {
 
     public void onEnable() {
 	// Setup directory and desc info.
-	desc = getDescription();
-        dir = getDataFolder();
+	dir = getDataFolder();
         
         // Set defaults.
 	snowballDamage = 3;

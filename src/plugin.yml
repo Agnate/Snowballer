@@ -6,3 +6,11 @@ main: ca.agnate.Snowballer.Snowballer
 name: Snowballer
 startup: postworld
 version: 0.1.0
+permissions:
+    snowballer.*:
+        description: Gives access to snowball damage
+        default: false
+        children:
+            snowballer.damage: true
+    snowballer.damage:
+        default: false
