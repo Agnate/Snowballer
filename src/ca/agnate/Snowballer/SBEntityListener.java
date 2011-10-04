@@ -37,7 +37,7 @@ public class SBEntityListener extends EntityListener {
 	    Player p = (Player) sb.getShooter();
 	    
 	    // They don't have permission to use Snowballer.
-	    if ( !plugin.has(p, Node.DAMAGE.toString() ) ) {
+	    if ( !plugin.has(p, Node.DAMAGE ) ) {
 		return;
 	    }
 	}

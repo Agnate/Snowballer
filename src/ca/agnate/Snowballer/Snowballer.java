@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityListener;
+import org.bukkit.permissions.Permissible;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.config.Configuration;
@@ -45,31 +46,26 @@ public class Snowballer extends JavaPlugin {
 	System.out.println("[" + this + "] Snowballer is enabled.");
     }
 
-    public boolean has(Player p, String s)
-    {
-	//return (permissionHandler == null || permissionHandler.has(p, s));
-	//return hasSuperPerms(p, s) || hasOPPerm(p, s);
-	return hasSuperPerms(p, s);
+    public boolean has(Permissible p, Node n) {
+        // return (permissionHandler == null || permissionHandler.has(p, s));
+        // return hasSuperPerms(p, n.toString()) || hasOPPerm(p, n);
+	return hasSuperPerms(p, n.toString());
     }
-
-    public boolean hasOPPerm (Player p, String node) {
-	// If the node requires OP status, and the player has OP, then true.
-	return( permissionOPs == null  || permissionOPs.contains(node) == false || p.isOp() );
+    protected boolean hasOPPerm(Permissible p, Node node) {
+        // If the node requires OP status, and the player has OP, then true.
+        return (permissionOPs == null || permissionOPs.contains(node) == false || p.isOp());
     }
+    protected boolean hasSuperPerms(Permissible p, String s) {
+        String[] nodes = s.split("\\.");
 
-    public boolean hasSuperPerms(Player p, String s)
-    {
-	String[] nodes = s.split("\\.");
+        String perm = "";
+        for (int i = 0; i < nodes.length; i++) {
+            perm += nodes[i] + ".";
+            if (p.hasPermission(perm + "*"))
+                return true;
+        }
 
-	String perm = "";
-	for (int i = 0; i < nodes.length; i++)
-	{
-	    perm += nodes[i] + ".";
-	    if (p.hasPermission(perm + "*"))
-		return true;
-	}
-
-	return p.hasPermission(s);
+        return p.hasPermission(s);
     }
 
     public int getSnowballDamage() {
