@@ -1,0 +1,4 @@
+snowball_damage: 3
+allow_dispenser: false
+allow_snowman: false
+use_permissions: true

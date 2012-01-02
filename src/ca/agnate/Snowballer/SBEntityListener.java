@@ -1,5 +1,6 @@
 package ca.agnate.Snowballer;
 
+import org.bukkit.craftbukkit.entity.CraftSnowman;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
@@ -41,7 +42,11 @@ public class SBEntityListener extends EntityListener {
 		return;
 	    }
 	}
-	else if ( !plugin.allowDispensers() ) {
+	else if ( sb.getShooter() instanceof CraftSnowman  &&  !plugin.allowSnowmen() ) {
+	    // Snowmen cannot trigger snowballs.
+	    return;
+	}
+	else if ( sb.getShooter() == null  &&  !plugin.allowDispensers() ) {
 	    // Dispensers cannot trigger snowballs.
 	    return;
 	}
